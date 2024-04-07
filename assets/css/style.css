@@ -3853,6 +3853,7 @@ button.swiper-pagination-bullet {
 @media (max-width: 743px) {
     .menu-bar {
         padding-bottom: 3rem;
+        background-attachment: local;
     }
 }
 
@@ -5384,6 +5385,10 @@ button.swiper-pagination-bullet {
 .accordion-gallery__btn.active .accordion-gallery__arrow {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+
+.accordion-gallery__el {
+    padding-bottom: 2rem;
 }
 
 .accordion-gallery__arrow {
