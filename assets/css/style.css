@@ -3104,6 +3104,13 @@ button.swiper-pagination-bullet {
     padding: 0 1rem 1rem 1rem;
 }
 
+@media (max-width: 743px) {
+    .modal-advantage__content {
+        padding-top: 2rem;
+        height: 100%;
+    }
+}
+
 .modal-advantage__content img {
     width: 11.3rem;
     height: auto;
@@ -3702,6 +3709,7 @@ button.swiper-pagination-bullet {
 @media (max-width: 743px) {
     .menu__wrap {
         width: 100%;
+        padding-bottom: 10rem;
     }
 }
 
@@ -3823,13 +3831,15 @@ button.swiper-pagination-bullet {
     }
 }
 
-.advantage__el-logo svg, .advantage__el-logo img {
+.advantage__el-logo svg,
+.advantage__el-logo img {
     width: 7.9rem;
     height: 7.9rem;
 }
 
 @media (max-width: 743px) {
-    .advantage__el-logo svg, .advantage__el-logo img {
+    .advantage__el-logo svg,
+  .advantage__el-logo img {
         width: auto;
         height: 4rem;
     }
