@@ -3141,6 +3141,12 @@ button.swiper-pagination-bullet {
     height: 100vh;
 }
 
+@media (max-width: 743px) {
+    #advantageModal {
+        overflow-y: visible;
+    }
+}
+
 #advantageModal .modal {
     margin-top: 8rem;
 }
