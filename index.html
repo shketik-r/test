@@ -39,7 +39,7 @@
         </ul>
       </nav>
   
-      <button class="btn">Забронировать</button>
+      <button class="btn" data-open-modal="form-modal">Забронировать</button>
   
       <div class="menu">
   
@@ -335,14 +335,15 @@
       </div>
   
     </div>
+    <button class="btn book-mobile" data-open-modal="form-modal">Забронировать</button>
   
   </header>
   <!-- Main content -->
   <main>
     
     <section class="menu-bar" style="background-image: url('assets/images/header/header-bg.png')">
-      <div class="menu-bar__title">
-        <img src="assets/images/title/menu.png" alt="menu">
+      <div class="menu-bar__title title">
+        <img src="assets/images/title/menu.svg" alt="menu">
       </div>
     
       <div class="menu-bar__food container">
@@ -1858,7 +1859,7 @@
     <section class="about">
       <div class="about__wrap container">
         <div class="about__wrap-title">
-          <img src="assets/images/title/about.png" alt="about">
+          <img src="assets/images/title/about.svg" alt="about">
         </div>
         <div class="about__grid">
           <div class="about__el">
@@ -2149,7 +2150,7 @@
     <section class="gallery">
     
       <div class="gallery__title">
-        <img src="assets/images/title/gallery.png" alt="gallery">
+        <img src="assets/images/title/gallery.svg" alt="gallery">
       </div>
     
       <div class="gallery__wrap container">
@@ -2209,13 +2210,13 @@
             <img src="assets/images/gallery/scheme/scheme.png" alt="#">
           </div>
     
-          <div class="scheme__sakura" data-open-modal="modal-sakura">
+          <button class="scheme__sakura" data-open-modal="modal-sakura">
             <img src="assets/images/gallery/scheme/sakura.png" alt="#">
-          </div>
+          </button>
     
-          <div class="scheme__enot" data-open-modal="modal-enot">
+          <button class="scheme__enot" data-open-modal="modal-enot">
             <img src="assets/images/gallery/scheme/enot.png" alt="#">
-          </div>
+          </button>
     
           <button class="scheme__terrace-btn" data-open-modal="modal-terrace">
             <img src="assets/images/gallery/scheme/terrace.png" alt="">
@@ -2284,7 +2285,6 @@
             </div>
           </div>
         </div>
-    
     
         <div class="accordion-gallery__el">
           <button class="accordion-gallery__btn">
@@ -2615,9 +2615,10 @@
       </div>
     </section>
     
+    
     <section class="contacts">
       <div class="contacts__title">
-        <img src="assets/images/title/contacts.png" alt="contacts">
+        <img src="assets/images/title/contact.svg" alt="contacts">
       </div>
       <div class="contacts__wrap">
         <div class="contacts__info">
@@ -2637,7 +2638,7 @@
     
     <section class="corporate" style="background-image: url('assets/images/header/header-bg.png')">
       <div class="corporate__title">
-        <img src="assets/images/title/corporate.png" alt="corporate">
+        <img src="assets/images/title/corporate.svg" alt="corporate">
         <p>И БАНКЕТЫ</p>
       </div>
     
@@ -2839,9 +2840,9 @@
     
         </div>
     
-        <div class="corporate__slider terrace-title --w100 --border-green">
+        <div class="corporate__slider  --w100 --border-green">
     
-          <div class="corporate__slider-title">
+          <div class="corporate__slider-title terrace-title">
             <img src="assets/images/title/terrace.png" alt="terrace">
           </div>
     
@@ -2900,7 +2901,7 @@
     <section class="form-page" style="background-image: url('assets/images/form-bg.png')">
     
       <div class="form-page__title">
-        <img src="assets/images/title/form.png" alt="form">
+        <img src="assets/images/title/form.svg" alt="form">
       </div>
       <div class="form-page__title-mobile">
         <img src="assets/images/title/form-mobile.png" alt="form">
@@ -2909,12 +2910,18 @@
       <form class="form">
     
         <input type="text" name="name" id="name" placeholder="Ваше имя">
-        <input type="tel" namr="tel" id="tel" placeholder="+7(">
+        <input type="tel" name="tel" id="tel" placeholder="+7(">
         <input type="text" name="age" placeholder="Ваш день рождения">
-    
         <button type="submit" class="btn">Отправить</button>
     
+        <div class="form-page__thank">
+          <p>Спасибо! <br>
+            Мы не будем спамить - всё только по существу</p>
+        </div>
+    
       </form>
+    
+    
     
     </section>
   </main>
@@ -2934,14 +2941,76 @@
       <div class="modal-advantage__logo">
         <img src="assets/images/logo/logo.png" alt="logo">
       </div>
-      
       <div class="modal-advantage__content">
       </div>
     </div>
   </div>
+  
+  
+  <div id="form-modal" class="form-modal modal-wrapper" data-modal="form-modal">
+    <div class="modal">
+      <div class="modal-advantage__logo">
+        <img src="assets/images/logo/logo.png" alt="logo">
+      </div>
+      <div class="modal__close" data-close-modal></div>
+      <form class="modal-form">
+  
+        <div class="modal-form__inputs">
+  
+          <input class="modal-form__i-name" type="text" name="name" placeholder="Ваше имя">
+          <input class="modal-form__i-tel" type="tel" name="tel" placeholder="+7(" onkeyup="this.value = this.value.replace(/[A-Za-zА-Яа-яЁё]/, '');">
+          <div class="modal-form__date">
+            <input class="modal-form__i-date" id="date" type="date" name="date" value="">
+          </div>
+  
+          <div class="modal-form__drop dropdown">
+            <div class="modal-form__drop-head dropdown__btn">
+              <input type="text" name="time" value="19:00">
+              <span class="result-time">19:00</span>
+            </div>
+            <div class="modal-form__drop-panel dropdown__panel">
+              <div class="modal-form__drop-wrap">
+                <div class="modal-form__drop-time">13:00</div>
+                <div class="modal-form__drop-time">14:00</div>
+                <div class="modal-form__drop-time">15:00</div>
+                <div class="modal-form__drop-time">16:00</div>
+                <div class="modal-form__drop-time">17:00</div>
+                <div class="modal-form__drop-time">18:00</div>
+                <div class="modal-form__drop-time">19:00</div>
+                <div class="modal-form__drop-time">20:00</div>
+                <div class="modal-form__drop-time">21:00</div>
+              </div>
+  
+            </div>
+  
+          </div>
+  
+          <div class="modal-form__i-counter">
+            <p>Сколько человек?</p>
+            <div class="modal-form__i-counter-wrap js-counter">
+              <button class="min" type="button">-</button>
+              <input type="number" value="2">
+              <button class="plus" type="button">+</button>
+            </div>
+          </div>
+        </div>
+        <textarea name="comment" placeholder="Комментарии"></textarea>
+  
+        <button type="submit" class="btn">Забронировать</button>
+  
+      </form>
+  
+      <div class="form-modal__thank js-modal-thank">
+        <p class="form-modal__thank-name">Спасибо, <span class="js-name"></span>!</p>
+        <p class="form-modal__thank-time"><span>Ждём Вас</span> <span class="js-date"></span>  в  <span class="js-time"></span></p>
+      </div>
+  
+  
+    </div>
+  
+  </div>
     <!-- lib JS -->
     <script src="./assets/js/lib/swiper.min.js"></script>
-    <script src="./assets/js/lib/fancybox.min.js"></script>
 
   <!--my JS -->
   <script src="./assets/js/index.js"></script>

@@ -68,9 +68,9 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   const swiperCorporate = document.querySelectorAll('.swiper-corporate');
 
-  if(swiperCorporate.length > 0){
+  if (swiperCorporate.length > 0) {
 
-    swiperCorporate.forEach(sc=>{
+    swiperCorporate.forEach(sc => {
       const bn = sc.querySelector('.btn-next');
       const bp = sc.querySelector('.btn-prev');
       new Swiper(sc, {
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           },
           743: {
             slidesPerView: 2.5,
-            spaceBetween:60,
+            spaceBetween: 60,
           },
           1025: {
             slidesPerView: 2,
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       });
     })
 
-  
+
   }
 
   new Swiper(".swiper-terrace", {
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       },
       743: {
         slidesPerView: 2.5,
-        spaceBetween:60,
+        spaceBetween: 60,
       },
       1025: {
         slidesPerView: 4,
@@ -128,13 +128,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
       },
     },
     navigation: {
-      nextEl:".swiper-terrace .btn-next",
+      nextEl: ".swiper-terrace .btn-next",
       prevEl: ".swiper-terrace .btn-prev",
     },
   });
-
-
-
   /*-------------------------------swiper end------------------------------*/
 
   class Modal {
@@ -329,6 +326,80 @@ document.addEventListener("DOMContentLoaded", function (event) {
       showPanel: 0,               // выбираем открытую панель
     })
   }
+  class DropDownList {
+
+    constructor(dropDown, setting) {
+      this.dropDown = dropDown;
+      this.setting = setting
+      this._getElements();
+      this._click();
+      if (this.setting.closeWindow === true) {
+        this._closeWindow()
+      }
+    }
+
+    _getElements() {
+      this._getBtn();
+      this._getPanel();
+    }
+
+    _getBtn() {
+      return this.btn = typeof this.setting.btn === "string" ? this.dropDown.querySelector(this.setting.btn) : this.setting.btn; //получить кнопки
+    }
+    _getPanel() {
+      return this.panel = typeof this.setting.panel === "string" ? this.dropDown.querySelector(this.setting.panel) : this.setting.panel; // получить панели
+    }
+
+    _click() {
+      this.btn.addEventListener('click', () => {
+        if (this.panel.style.maxHeight) {
+          this.dropDown.classList.remove('active');
+          this.panel.classList.remove('active');
+        } else {
+          this.dropDown.classList.add('active');
+          this.panel.classList.add('active');
+        }
+      })
+    }
+    _closeWindow() {
+      this.dropDown.addEventListener('click', () => {
+        document.addEventListener("click", event => {
+          this._hide(event);
+        });
+      })
+    }
+    _hide(event) {
+      if (this.dropDown.contains(event.target))
+        return;
+      this.dropDown.classList.remove('active');
+      this.panel.classList.remove('active');
+      document.removeEventListener("click", event => {
+        this._hide(event);
+      });
+    }
+  }
+
+  let dropdown = document.querySelector('.dropdown');
+
+  if (dropdown) {
+
+    new DropDownList(dropdown, {
+      panel: '.dropdown__panel',
+      btn: '.dropdown__btn',
+      closeWindow: true, // не обязательно, закрывать панель при клике вне блока
+    })
+
+    const timeBtn = dropdown.querySelectorAll('.modal-form__drop-time');
+    const res = dropdown.querySelector(".result-time");
+    const input = dropdown.querySelector("input");
+    timeBtn.forEach(b => {
+      b.addEventListener("click", () => {
+        res.textContent = b.textContent;
+        input.value = b.textContent;
+      })
+    })
+
+  }
 
   const Menu = {
     btn: document.querySelector('.burger'),
@@ -430,45 +501,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   Anchors.scrollIntoView();
 
-  [].forEach.call(document.querySelectorAll('.tel'), function (input) {
-    let keyCode;
-
-    function mask(event) {
-      event.keyCode && (keyCode = event.keyCode);
-      let pos = this.selectionStart;
-      if (pos < 3) event.preventDefault();
-      let matrix = "+7 (___) ___ ____",
-        i = 0,
-        def = matrix.replace(/\D/g, ""),
-        val = this.value.replace(/\D/g, ""),
-        new_value = matrix.replace(/[_\d]/g, function (a) {
-          return i < val.length ? val.charAt(i++) : a
-        });
-      i = new_value.indexOf("_");
-      if (i != -1) {
-        i < 5 && (i = 3);
-        new_value = new_value.slice(0, i)
-      }
-      let reg = matrix.substr(0, this.value.length).replace(/_+/g,
-        function (a) {
-          return "\\d{1," + a.length + "}"
-        }).replace(/[+()]/g, "\\$&");
-      reg = new RegExp("^" + reg + "$");
-      if (!reg.test(this.value) || this.value.length < 5 || keyCode > 47 && keyCode < 58) {
-        this.value = new_value;
-      }
-      if (event.type == "blur" && this.value.length < 5) {
-        this.value = "";
-      }
-    }
-
-    input.addEventListener("input", mask, false);
-    input.addEventListener("focus", mask, false);
-    input.addEventListener("blur", mask, false);
-    input.addEventListener("keydown", mask, false);
-
-  });
-
   /*-------------------------------animation------------------------------*/
   let observer = new IntersectionObserver(onEntry, { threshold: [0.3] });
   let elements = document.querySelector('.present');
@@ -499,17 +531,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
     });
   }
-
-  /*---------------------------------form---------------------------------*/
-  // let formContract = document.querySelectorAll('form')
-  // if (formContract) {
-  //   formContract.forEach(f => {
-  //     f.addEventListener("submit", (e) => {
-  //       e.preventDefault();
-  //     })
-  //   })
-  // }
-  /*-----------------------*/
 
   tab('.menu-bar__food');
   tab('.menu-bar__drink');
@@ -543,7 +564,150 @@ document.addEventListener("DOMContentLoaded", function (event) {
       scheme.classList.remove('active');
     })
   }
+
+  /*---------------------------------form---------------------------------*/
+  let formContract = document.querySelector('.form')
+  if (formContract) {
+
+    formContract.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+
+      let name = ev.target.querySelector("input[name='name']");
+      let tel = ev.target.querySelector("input[name='tel']");
+      let age = ev.target.querySelector("input[name='age']");
+
+
+      if (name.value === "") {
+        name.classList.add('error');
+        return;
+      } else {
+        name.classList.remove('error');
+
+      }
+
+      if (tel.value.length < 6) {
+        tel.classList.add('error');
+        return;
+      } else {
+        tel.classList.remove('error');
+
+      }
+
+      if (age.value === "") {
+        age.classList.add('error');
+
+        return;
+      } else {
+        age.classList.remove('error');
+
+      }
+
+      const formData = new FormData(formContract);
+
+      formContract.classList.add('active')
+
+    })
+
+  }
+
+  let modalForm = document.querySelector('.modal-form')
+  if (modalForm) {
+
+    modalForm.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+
+      let name = ev.target.querySelector("input[name='name']");
+      let tel = ev.target.querySelector("input[name='tel']");
+      let date = ev.target.querySelector("input[name='date']");
+      let time = ev.target.querySelector("input[name='time']");
+
+      if (name.value === "") {
+        name.classList.add('error');
+        return;
+      } else {
+        name.classList.remove('error');
+
+      }
+
+      if (tel.value.length < 6) {
+        tel.classList.add('error');
+        return;
+      } else {
+        tel.classList.remove('error');
+
+      }
+
+      if (date.value === "") {
+        date.classList.add('error');
+
+        return;
+      } else {
+        date.classList.remove('error');
+
+      }
+
+      const formData = new FormData(formContract);
+
+
+      modalThank(name, date, time, ev.target)
+
+    })
+  }
+
+  const formPageThank = document.querySelector('.form-page__thank');
+  if (formPageThank) {
+    formPageThank.addEventListener('click', () => {
+      formContract.classList.remove('active')
+    })
+  }
+
+  const formCounter = document.querySelector('.js-counter');
+  if (formCounter) {
+
+    const btnPlus = formCounter.querySelector('.plus');
+    const btnMinus = formCounter.querySelector('.min');
+    const inputCounter = formCounter.querySelector('input');
+
+    btnPlus.addEventListener('click', () => {
+      inputCounter.value++
+    })
+
+    btnMinus.addEventListener('click', () => {
+      if (inputCounter.value <= 1) {
+        return;
+      }
+      inputCounter.value--
+    })
+
+
+
+
+  }
+  /*-----------------------*/
+
+
+
+  const inputTel = document.querySelectorAll('input[type="tel"]');
+  if (inputTel.length > 0) {
+    inputTel.forEach(el => {
+      el.addEventListener('click', () => {
+        el.value = "+7"
+      })
+    })
+  }
+
 });
+
+function modalThank(nameInput, dateInput, timeInput, form) {
+ 
+  let newDate = new Date(dateInput.value).toLocaleDateString('ru-RU');
+  document.querySelector('.js-name').textContent = nameInput.value;
+  document.querySelector('.js-time').textContent = timeInput.value;
+  document.querySelector('.js-date').textContent = newDate;
+  const modalThank = document.querySelector('.js-modal-thank');
+  modalThank.style.display = 'flex';
+  form.style.display = 'none';
+}
 
 
 function tab(select) {
