@@ -1702,7 +1702,7 @@ button.swiper-pagination-bullet {
     cursor: pointer;
 }
 
-.modal-form__i-date ::-webkit-date-and-time-value {
+.modal-form__i-date::-webkit-date-and-time-value {
     text-align: left;
 }
 
