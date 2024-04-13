@@ -708,19 +708,51 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 })
 
-document.addEventListener('input', function (e) {
-  if (e.target.tagName.toLowerCase() !== 'input' || e.target.type !== 'date') return;
 
-  var dateInput = e.target;
-  var placeholder = dateInput.getAttribute('placeholder');
 
-  if (!dateInput.value) {
-      dateInput.setAttribute('type', 'text');
-      dateInput.value = placeholder;
-  } else {
-      dateInput.setAttribute('type', 'date');
-  }
-});
+
+
+
+
+ 
+      const dateInput = document.getElementById('dateInput');
+
+
+
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      let month = currentDate.getMonth() + 1;
+      let day = currentDate.getDate();
+
+      // Форматируем месяц и день, чтобы добавить ведущий ноль, если необходимо
+      if (month < 10) {
+        month = '0' + month;
+      }
+      if (day < 10) {
+        day = '0' + day;
+      }
+
+      // Устанавливаем значение поля ввода в формате YYYY-MM-DD
+      dateInput.value =   year+ '-' + month + '-'+ day ;
+
+      // При фокусировке на поле ввода типа "date" преобразовываем его в текстовое поле
+      dateInput.addEventListener('focus', ()=> {
+     
+      });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 });
 
 function modalThank(nameInput, dateInput, timeInput, form) {
