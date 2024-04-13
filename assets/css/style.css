@@ -1676,6 +1676,7 @@ button.swiper-pagination-bullet {
     padding: 1.7rem;
     padding-left: 4.5rem;
     height: 5.5rem;
+    text-align: left;
 }
 
 @media (max-width: 743px) {
