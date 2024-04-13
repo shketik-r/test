@@ -2441,6 +2441,8 @@ button.swiper-pagination-bullet {
     display: flex;
     -ms-flex-direction: column;
     flex-direction: column;
+    position: relative;
+    z-index: 2;
 }
 
 @media (max-width: 743px) {
@@ -2464,6 +2466,8 @@ button.swiper-pagination-bullet {
 
 .menu__wrap .header__banner-network {
     margin-top: 2rem;
+    position: relative;
+    z-index: 3;
 }
 
 @media (max-width: 743px) {
