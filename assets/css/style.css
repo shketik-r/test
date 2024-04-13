@@ -1673,6 +1673,7 @@ button.swiper-pagination-bullet {
 
 .modal-form__i-date {
     border-radius: 2rem;
+    padding-left: 4.5rem;
     height: 5.5rem;
     text-align: left;
 }
@@ -1699,6 +1700,10 @@ button.swiper-pagination-bullet {
 .modal-form__i-date::-webkit-calendar-picker-indicator:hover {
     background: transparent;
     cursor: pointer;
+}
+
+.modal-form__i-date ::-webkit-date-and-time-value {
+    text-align: left;
 }
 
 .modal-form__drop {
