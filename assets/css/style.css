@@ -1628,14 +1628,6 @@ button.swiper-pagination-bullet {
     color: rgb(243, 30, 30);
 }
 
-@media (max-width: 743px) {
-    .modal-form__i-name, .modal-form__i-tel, .modal-form__i-date {
-        font-size: 1.4rem;
-        line-height: 1.8rem;
-        border-radius: 1.1rem;
-    }
-}
-
 .modal-form textarea {
     resize: none;
     width: 31.5rem;
@@ -1765,9 +1757,15 @@ button.swiper-pagination-bullet {
     border-radius: 2rem;
 }
 
+.modal-form__i-counter-wrap p {
+    white-space: nowrap;
+}
+
 @media (max-width: 743px) {
     .modal-form__i-counter-wrap {
         border-radius: 1.1rem;
+        padding: 1.2rem 0.4rem;
+        width: 9.1rem;
     }
 }
 
@@ -1785,6 +1783,10 @@ button.swiper-pagination-bullet {
     .modal-form .btn {
         margin-top: 2rem;
     }
+}
+
+.plus, .min {
+    color: #333333;
 }
 
 /*------header-----*/
