@@ -708,20 +708,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 })
 
-  // Check if the date input type is supported
-  var dateInput = document.getElementById('dateInput');
-  
-  if(dateInput.type !== 'date') {
-    // If not supported, use a polyfill
-    dateInput.type = 'text';
-    
-    var datePicker = new DatePicker({
-      startView: 3,
-      format: 'yyyy-mm-dd'
-    });
-    
-    datePicker.init();
+document.addEventListener('input', function (e) {
+  if (e.target.tagName.toLowerCase() !== 'input' || e.target.type !== 'date') return;
+
+  var dateInput = e.target;
+  var placeholder = dateInput.getAttribute('placeholder');
+
+  if (!dateInput.value) {
+      dateInput.setAttribute('type', 'text');
+      dateInput.value = placeholder;
+  } else {
+      dateInput.setAttribute('type', 'date');
   }
+});
 });
 
 function modalThank(nameInput, dateInput, timeInput, form) {

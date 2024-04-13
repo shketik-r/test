@@ -1811,6 +1811,24 @@ input[type=date]::-webkit-calendar-picker-indicator {
     height: 1.5rem;
 }
 
+.date-input::-webkit-inner-spin-button,
+.date-input::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.date-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.date-input::-webkit-input-placeholder {
+    color: grey;
+}
+
 /*------header-----*/
 .header {
     position: relative;
