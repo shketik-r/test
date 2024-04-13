@@ -2914,14 +2914,13 @@
     
         <input type="text" name="name" id="name" placeholder="Ваше имя">
         <input type="tel" name="tel" id="tel" placeholder="+7(">
-        <input type="text" name="age" placeholder="Ваш день рождения">
+        <input type="text" class="birth" name="age" placeholder="Ваш день рождения">
         <button type="submit" class="btn">Отправить</button>
     
         <div class="form-page__thank">
           <p>Спасибо! <br>
             Мы не будем спамить - всё только по существу</p>
         </div>
-    
       </form>
     
     
@@ -2963,7 +2962,7 @@
           <input class="modal-form__i-name" type="text" name="name" placeholder="Ваше имя">
           <input class="modal-form__i-tel" type="tel" name="tel" placeholder="+7(" onkeyup="this.value = this.value.replace(/[A-Za-zА-Яа-яЁё]/, '');">
           <div class="modal-form__date">
-            <input class="modal-form__i-date" id="date" type="date" name="date" value="" placeholder="дд.мм.гг">
+            <input class="modal-form__i-date" min="2024-01-01" max="2024-12-31" id="date" type="date" name="date" value="" placeholder="дд.мм.гг">
           </div>
   
           <div class="modal-form__drop dropdown">

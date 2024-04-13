@@ -693,6 +693,21 @@ document.addEventListener("DOMContentLoaded", function (event) {
     })
   }
 
+
+  document.querySelector('.birth').addEventListener('keydown', function (event){
+
+    if (event.key.length > 1) return;
+    
+    if (event.target.value.length < 10 && /\d/.test(event.key)){ 
+        if (~[2,5].indexOf(event.target.value.length)){
+         event.target.value += '.'   
+        }
+    }
+    else{
+        event.preventDefault()
+    }
+})
+
 });
 
 function modalThank(nameInput, dateInput, timeInput, form) {

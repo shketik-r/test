@@ -4986,6 +4986,22 @@ button.swiper-pagination-bullet {
     border: 0.1rem solid rgb(243, 30, 30);
 }
 
+.form input.error::-webkit-input-placeholder {
+    color: rgb(243, 30, 30);
+}
+
+.form input.error:-ms-input-placeholder {
+    color: rgb(243, 30, 30);
+}
+
+.form input.error::-ms-input-placeholder {
+    color: rgb(243, 30, 30);
+}
+
+.form input.error::placeholder {
+    color: rgb(243, 30, 30);
+}
+
 @media (max-width: 743px) {
     .form input {
         font-size: 1.4rem;
