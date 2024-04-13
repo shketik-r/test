@@ -694,60 +694,36 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
 
-  document.querySelector('.birth').addEventListener('keydown', function (event){
+  document.querySelector('.birth').addEventListener('keydown', function (event) {
 
     if (event.key.length > 1) return;
-    
-    if (event.target.value.length < 10 && /\d/.test(event.key)){ 
-        if (~[2,5].indexOf(event.target.value.length)){
-         event.target.value += '.'   
-        }
-    }
-    else{
-        event.preventDefault()
-    }
-})
 
-
-
-
-
-
-
- 
-      const dateInput = document.getElementById('dateInput');
-
-
-
-      const currentDate = new Date();
-      const year = currentDate.getFullYear();
-      let month = currentDate.getMonth() + 1;
-      let day = currentDate.getDate();
-
-      // Форматируем месяц и день, чтобы добавить ведущий ноль, если необходимо
-      if (month < 10) {
-        month = '0' + month;
+    if (event.target.value.length < 10 && /\d/.test(event.key)) {
+      if (~[2, 5].indexOf(event.target.value.length)) {
+        event.target.value += '.'
       }
-      if (day < 10) {
-        day = '0' + day;
-      }
+    }
+    else {
+      event.preventDefault()
+    }
+  })
 
-      // Устанавливаем значение поля ввода в формате YYYY-MM-DD
-      dateInput.value =   year+ '-' + month + '-'+ day ;
+  const dateInput = document.getElementById('dateInput');
 
-      // При фокусировке на поле ввода типа "date" преобразовываем его в текстовое поле
-      dateInput.addEventListener('focus', ()=> {
-     
-      });
-
-
-
-
-
-
-
-
-
+  if (dateInput) {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    let month = currentDate.getMonth() + 1;
+    let day = currentDate.getDate();
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (day < 10) {
+      day = '0' + day;
+    }
+    dateInput.value = year + '-' + month + '-' + day;
+    dateInput.min = year + '-' + month + '-' + day;
+  }
 
 
 

@@ -1,11 +1,9 @@
-@charset "UTF-8";
-
 @font-face {
     font-family: "Elowen";
-  src: url("../fonts/Elowen.eot");
-  src: local("Elowen"), url("../fonts/Elowen.eot?#iefix") format("embedded-opentype"), url("../fonts/Elowen.woff2") format("woff2"), url("../fonts/Elowen.woff") format("woff"), url("../fonts/Elowen.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
+    src: url("../fonts/Elowen.eot");
+    src: local("Elowen"), url("../fonts/Elowen.eot?#iefix") format("embedded-opentype"), url("../fonts/Elowen.woff2") format("woff2"), url("../fonts/Elowen.woff") format("woff"), url("../fonts/Elowen.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
 }
 
 @font-face {
@@ -1601,6 +1599,22 @@ button.swiper-pagination-bullet {
     height: 2.8rem;
 }
 
+.modal-form__date::after {
+    position: absolute;
+    content: "";
+    background: url("../images/icon/arrow-input.svg");
+    background-size: 2rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
+    right: 1.6rem;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
 .modal-form__i-name, .modal-form__i-tel, .modal-form__i-date {
     background: #fff;
     font-size: 1.6rem;
@@ -1608,6 +1622,7 @@ button.swiper-pagination-bullet {
     border-radius: 2rem;
     width: 100%;
     padding: 1.8rem 1.4rem;
+    color: #333333;
 }
 
 @media (max-width: 743px) {
@@ -1618,7 +1633,7 @@ button.swiper-pagination-bullet {
 }
 
 .modal-form__i-name.error, .modal-form__i-tel.error, .modal-form__i-date.error {
-    border: 0.1rem solid rgb(243, 30, 30);
+    color: rgb(243, 30, 30);
 }
 
 .modal-form__i-name.error::-webkit-input-placeholder, .modal-form__i-tel.error::-webkit-input-placeholder, .modal-form__i-date.error::-webkit-input-placeholder {
@@ -1656,14 +1671,28 @@ button.swiper-pagination-bullet {
 }
 
 .modal-form__i-date {
-    padding-left: 5.5rem;
+    border-radius: 1.1rem;
+    padding: 1.7rem;
+    padding-left: 4.5rem;
+    height: 5.5rem;
 }
 
 .modal-form__i-date::-webkit-calendar-picker-indicator {
-    color: transparent;
-    opacity: 1;
-    background: url(../images/icon/arrow-input.svg) no-repeat center;
-    background-size: contain;
+    background: transparent;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.modal-form__i-date::-webkit-calendar-picker-indicator:hover {
+    background: transparent;
+    cursor: pointer;
 }
 
 .modal-form__drop {
@@ -1794,29 +1823,9 @@ button.swiper-pagination-bullet {
     }
 }
 
-.plus, .min {
+.plus,
+.min {
     color: #333333;
-}
-
-.modal-form__i-date {
-  /* Убираем стандартное отображение */
-    appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    border-radius: 1.1rem;
-    padding: 1.7rem;
-    padding-left: 4.5rem;
-    height: 5.5rem;
-}
-
-/* Устанавливаем кастомный фон для стрелки */
-.modal-form__i-date ::-webkit-calendar-picker-indicator {
-    background: url("../images/icon/arrow-input.svg");
-    background-size: 2rem;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 1.5rem;
-    height: 1.5rem;
 }
 
 /*------header-----*/
@@ -5010,10 +5019,6 @@ button.swiper-pagination-bullet {
     border-radius: 2rem;
     width: 100%;
     padding: 1.8rem 1.4rem;
-}
-
-.form input.error {
-    border: 0.1rem solid rgb(243, 30, 30);
 }
 
 .form input.error::-webkit-input-placeholder {
