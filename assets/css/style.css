@@ -1667,14 +1667,21 @@ button.swiper-pagination-bullet {
     .modal-form textarea {
         height: 8.5rem;
         margin-top: 1rem;
+        border-radius: 1.1rem;
     }
 }
 
 .modal-form__i-date {
-    border-radius: 1.1rem;
+    border-radius: 2rem;
     padding: 1.7rem;
     padding-left: 4.5rem;
     height: 5.5rem;
+}
+
+@media (max-width: 743px) {
+    .modal-form__i-date {
+        border-radius: 1.1rem;
+    }
 }
 
 .modal-form__i-date::-webkit-calendar-picker-indicator {
@@ -1703,6 +1710,12 @@ button.swiper-pagination-bullet {
     border-radius: 2rem;
     width: 100%;
     padding: 1.8rem 1.4rem;
+}
+
+@media (max-width: 743px) {
+    .modal-form__drop {
+        border-radius: 1.1rem;
+    }
 }
 
 .modal-form__drop input {
@@ -1776,6 +1789,12 @@ button.swiper-pagination-bullet {
     justify-content: space-between;
     -ms-flex-align: center;
     align-items: center;
+}
+
+@media (max-width: 743px) {
+    .modal-form__i-counter {
+        border-radius: 1.1rem;
+    }
 }
 
 .modal-form__i-counter-wrap {
