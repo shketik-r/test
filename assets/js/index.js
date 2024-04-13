@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         let newDataName = this._convertString();
         this.btnAll.forEach(b => {
           b.addEventListener('click', () => {
-            console.log('open');
             document.querySelector('.' + this.ACTIVE_MODAL) ? document.querySelector('.' + this.ACTIVE_MODAL).classList.remove(this.ACTIVE_MODAL) : '';
             this.requiredModal = document.querySelector(`[data-${this.MODAL_DATA_NAME}="${b.dataset[newDataName]}"]`);
             if (this.requiredModal) {
@@ -352,7 +351,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     _click() {
       this.btn.addEventListener('click', () => {
-        if (this.panel.style.maxHeight) {
+        if (this.panel.classList.contains('active')) {
           this.dropDown.classList.remove('active');
           this.panel.classList.remove('active');
         } else {
@@ -386,7 +385,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     new DropDownList(dropdown, {
       panel: '.dropdown__panel',
       btn: '.dropdown__btn',
-      closeWindow: true, // не обязательно, закрывать панель при клике вне блока
+      closeWindow: false, // не обязательно, закрывать панель при клике вне блока
     })
 
     const timeBtn = dropdown.querySelectorAll('.modal-form__drop-time');
@@ -685,8 +684,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
   /*-----------------------*/
 
-
-
   const inputTel = document.querySelectorAll('input[type="tel"]');
   if (inputTel.length > 0) {
     inputTel.forEach(el => {
@@ -699,7 +696,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 });
 
 function modalThank(nameInput, dateInput, timeInput, form) {
- 
+
   let newDate = new Date(dateInput.value).toLocaleDateString('ru-RU');
   document.querySelector('.js-name').textContent = nameInput.value;
   document.querySelector('.js-time').textContent = timeInput.value;
