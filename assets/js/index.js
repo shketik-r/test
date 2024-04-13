@@ -101,8 +101,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
         },
       });
     })
-
-
   }
 
   new Swiper(".swiper-terrace", {
@@ -317,6 +315,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
   const accordion_gallery = document.querySelector('.accordion-gallery');
+
   if (accordion_gallery) {
     new Accordion(accordion_gallery, {
       panel: '.accordion-gallery__panel',
@@ -325,6 +324,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       showPanel: 0,               // выбираем открытую панель
     })
   }
+
   class DropDownList {
 
     constructor(dropDown, setting) {
@@ -405,6 +405,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
     menu: document.querySelector('.menu'),
     menuWrap: document.querySelector('.menu__wrap'),
     nav: document.querySelector('.header nav'),
+    video: document.querySelectorAll('.video-smoke'),
 
     addEventListener() {
       if (this.btn || this.menu) {
@@ -412,14 +413,18 @@ document.addEventListener("DOMContentLoaded", function (event) {
           this.btn.classList.toggle('active');
           this.menu.classList.toggle('active');
           this.nav.classList.toggle('active');
-          this.btn.classList.contains('active') ? this._disableScroll() : this._enableScroll();
+         if (this.btn.classList.contains('active')){
+          this._disableScroll();
+          this._startVideo();
+          }else{
+            this._enableScroll();
+            this._stopVideo();
+          } 
         })
 
         this._close();
       }
     },
-
-
 
     _disableScroll() {
       let marginSize = window.innerWidth - document.documentElement.clientWidth;
@@ -442,6 +447,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
 
       this.closeMenu();
+      this._stopVideo();
       event.target.removeEventListener("click", event => this._hide(event));
 
     },
@@ -457,6 +463,22 @@ document.addEventListener("DOMContentLoaded", function (event) {
       this.menu.classList.remove('active');
       this.nav.classList.remove('active');
       this._enableScroll();
+    },
+
+    _startVideo() {
+      this.video.forEach(el=>{
+        console.log(el);
+        el.play();
+      })
+    },
+
+    _stopVideo() {
+      this.video.forEach(el=>{
+        console.log(el);
+        el.pause();
+        el.currentTime = 0;
+      })
+      
     }
 
 
@@ -476,18 +498,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
             const blockID = anchor.getAttribute('href').substr(1);
             const block = document.getElementById(blockID);
             if (block) {
-              const offsetTop = block.getBoundingClientRect().top + window.pageYOffset - 100;
+              const offsetTop = block.getBoundingClientRect().top + window.pageYOffset;
               window.scrollTo({
                 top: offsetTop,
                 behavior: "smooth",
               })
-              if (blockID === 'form') {
-                let input = document.getElementById('name');
-                setTimeout(() => {
-                  input.focus();
-                }, 300)
-
-              }
             }
           })
         }
@@ -741,7 +756,6 @@ function modalThank(nameInput, dateInput, timeInput, form) {
   modalThank.style.display = 'flex';
   form.style.display = 'none';
 }
-
 
 function tab(select) {
   const menu = document.querySelector(select);
