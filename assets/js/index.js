@@ -722,7 +722,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     
     datePicker.init();
   }
-
 });
 
 function modalThank(nameInput, dateInput, timeInput, form) {

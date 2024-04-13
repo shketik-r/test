@@ -1,9 +1,11 @@
+@charset "UTF-8";
+
 @font-face {
     font-family: "Elowen";
-    src: url("../fonts/Elowen.eot");
-    src: local("Elowen"), url("../fonts/Elowen.eot?#iefix") format("embedded-opentype"), url("../fonts/Elowen.woff2") format("woff2"), url("../fonts/Elowen.woff") format("woff"), url("../fonts/Elowen.ttf") format("truetype");
-    font-weight: 400;
-    font-style: normal;
+  src: url("../fonts/Elowen.eot");
+  src: local("Elowen"), url("../fonts/Elowen.eot?#iefix") format("embedded-opentype"), url("../fonts/Elowen.woff2") format("woff2"), url("../fonts/Elowen.woff") format("woff"), url("../fonts/Elowen.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
@@ -1787,6 +1789,26 @@ button.swiper-pagination-bullet {
 
 .plus, .min {
     color: #333333;
+}
+
+input[type=date] {
+  /* Убираем стандартное отображение */
+    appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 1.1rem;
+    padding: 1.7rem;
+    padding-left: 4.5rem;
+}
+
+/* Устанавливаем кастомный фон для стрелки */
+input[type=date]::-webkit-calendar-picker-indicator {
+    background: url("../images/icon/arrow-input.svg");
+    background-size: 2rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 /*------header-----*/
