@@ -1,0 +1,55 @@
+@font-face {
+  font-family: "Icons";
+  src: url("../fonts/Icons.ttf?4o1etn") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"]:not([class^="icon-box"]),
+[class*=" icon-"]:not([class*=" icon-box"]) {
+  font-family: "Icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-account:before {
+  content: "\e901";
+}
+.icon-clock:before {
+  content: "\e902";
+}
+.icon-facebook:before {
+  content: "\e903";
+}
+.icon-instagram:before {
+  content: "\e904";
+}
+.icon-telegram:before {
+  content: "\e905";
+}
+.icon-tiktok:before {
+  content: "\e906";
+}
+.icon-viber:before {
+  content: "\e907";
+}
+.icon-whatsapp:before {
+  content: "\e908";
+}
+.icon-youtube:before {
+  content: "\e909";
+}
+.icon-arrow:before {
+  content: "\e900";
+  color: #8d8d8d;
+}
+.icon-login:before {
+  content: "\e90a";
+}
